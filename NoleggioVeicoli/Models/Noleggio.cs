@@ -11,37 +11,34 @@ namespace NoleggioVeicoli
         public int IdNoleggio { get; set; }
         public DateTime InizioNoleggio { get; set; }
         public int NumGiorni { get; set; }
-        public double CostoNoleggio { get; set; }
         public String CfCliente { get; set; }
-        public String Targa { get; set; }
-
+        public Veicolo Veicolo {get;set;}
         public static int iD = 0;
 
-        public Noleggio(DateTime d, int nG, String cfc, String t, double costoGiornaliero)
+        public Noleggio(DateTime InizioNoleggio, int nG, String cfc, Veicolo veicolo )
         {
             iD++;
-            this.IdNoleggio = iD;
-            this.InizioNoleggio = d;
-            this.NumGiorni = nG;
-            this.CfCliente = cfc;
-            this.Targa = t;
-            this.CostoNoleggio = nG * costoGiornaliero;
+            IdNoleggio = iD;
+            this.InizioNoleggio = InizioNoleggio;
+            NumGiorni = nG;
+            CfCliente = cfc;
+            Veicolo = veicolo;
+
+            //this.Targa = t;
+            //this.CostoNoleggio = nG * costoGiornaliero;
             
         }
 
-        public Noleggio()
-        {
-
-        }
+        public Noleggio(){}
 
         public override string ToString() 
         {
-            return "Dati Noleggio:\n" + "ID: " + this.IdNoleggio +"\n"
-                + "Data inizio: " + this.InizioNoleggio + "\n"
-                + "Durata in giorni: " + this.NumGiorni + "\n"
-                + "Intestatario: " + this.CfCliente + "\n"
-                + "Veicolo: " + this.Targa + "\n"
-                + "Costo Noleggio: " + this.CostoNoleggio + ",00 Euro";
+            return "Dati Noleggio:\n" + "ID: " + IdNoleggio +"\n"
+                + "Data inizio: " + InizioNoleggio + "\n"
+                + "Durata in giorni: " + NumGiorni + "\n"
+                + "Intestatario: " + CfCliente + "\n"
+                + "Veicolo: " + Veicolo.Targa + "\n"
+                + "Costo Noleggio: " + Veicolo.TariffaGiornaliera*NumGiorni  + ",00 Euro";
         }
     }
 }

@@ -12,11 +12,11 @@ namespace NoleggioVeicoli
         public String Cognome { get; set; }
         public String Nome { get; set; }
 
-        public Cliente(String codFisc, String c, String n)
+        public Cliente(String cf, String cognome, String nome)
         {
-            this.CF = codFisc;
-            this.Cognome = c;
-            this.Nome = n;
+            CF = cf;
+            Cognome = cognome;
+            Nome = nome;
         }
     }
 }

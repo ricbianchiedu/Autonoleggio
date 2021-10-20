@@ -11,12 +11,9 @@ namespace NoleggioVeicoli
         public int NumPosti { get; set; }
 
         public Automobile(int np, String t, String m, double tG)
-            :base (t, m, tG)
+            : base (t, m, tG)
         {
             this.NumPosti = np;
-            this.Targa = t;
-            this.Modello = m;
-            this.TariffaGiornaliera = tG;
         }
     }
 }

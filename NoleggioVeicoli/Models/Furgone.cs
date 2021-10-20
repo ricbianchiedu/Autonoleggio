@@ -10,13 +10,10 @@ namespace NoleggioVeicoli
     {
         public int CapacitaCarico { get; set; }
 
-        public Furgone(int cC, String t, String m, double tG)
-            :base(t, m, tG)
+        public Furgone(int capacitaDiCarico, String t, String m, double tG)
+            : base(t, m, tG)
         {
-            this.Modello = m;
-            this.Targa = t;
-            this.TariffaGiornaliera = tG;
-            this.CapacitaCarico = cC;
+            CapacitaCarico = capacitaDiCarico;
         }
     }
 }
