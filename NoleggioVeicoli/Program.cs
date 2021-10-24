@@ -16,10 +16,15 @@ namespace NoleggioVeicoli
             List<Veicolo> Veicoli = new List<Veicolo>();
 
             //Creazione dati
-            Clienti.Add(new Cliente("BNCRCR63E03H294R", "Bianchi", "Riccardo"));
+            Clienti.Add(new Cliente("BNCRCR83E03H994R", "Bianchi", "Riccardo"));
             Clienti.Add(new Cliente("VRDGNN78B10H277C", "Verdi", "Giovanni"));
             Clienti.Add(new Cliente("RSSCRL92G26H944K", "Rossi", "Carlo"));
 
+            /*
+             * Una lista di istanze della classe base può ospitare anche
+             * istanze delle sue classi derivate.
+             */
+            
             Veicoli.Add(new Automobile(5, "FG655BD", "XV", 25.00));
             Veicoli.Add(new Automobile(4, "GB621KA", "Twingo", 20.00));
             
@@ -37,13 +42,13 @@ namespace NoleggioVeicoli
             Noleggi.Add(new Noleggio(d2, 4, Clienti[0].CF, Veicoli[3] ));
 
 
-            //Domanda a
+            //Domanda a: individuare un noleggio conoscendo l'id
             Noleggio n = CercaNoleggio(4, Noleggi);
             Console.WriteLine( n );
             Console.WriteLine();
 
-            //Domanda b
-            String stringaRicerca = "BNCRCR63E03H294R";
+            //Domanda b: individuare i noleggi di un cliente conoscendo il CF
+            String stringaRicerca = "BNCRCR83E03H994R";
 
             foreach (var item in VisualizzaNoleggi(stringaRicerca, Noleggi))
             {
@@ -52,7 +57,7 @@ namespace NoleggioVeicoli
             }
 
 
-            //Domanda c
+            //Domanda c: verificare la disponibilità di un mezzo per il noleggio
             if (VerificaDisponibilitaMezzo("FG655BD", 2021, 5, 1, 1, Noleggi))
             {
                 Console.WriteLine("Auto disponibile");
@@ -64,14 +69,14 @@ namespace NoleggioVeicoli
                 Console.WriteLine("----------");
             }
 
-            //Domanda d
+            //Domanda d: individuare l'incasso dei noleggi di un dato veicolo
             stringaRicerca = "FG655BD";
 
             Console.WriteLine("Il costo totale dei noleggi per l'auto " + stringaRicerca + " vale: " + IncassoNoleggi(stringaRicerca, Noleggi) + " Euro.");
 
 
-            //Domanda e
-            stringaRicerca = "BNCRCR63E03H294R";
+            //Domanda e: individuare la spesa per i noleggi di un certo cliente
+            stringaRicerca = "BNCRCR83E03H994R";
 
             Console.WriteLine("La spesa totale per i noleggi del cliente " + stringaRicerca + " vale: " + SpesaPerNoleggi(stringaRicerca, Noleggi) + " Euro.");
 
@@ -82,6 +87,7 @@ namespace NoleggioVeicoli
 
         public static Noleggio CercaNoleggio(int idNolo, List<Noleggio> noleggios)
         {
+            // Codice equivalente a quello della linea 97
             // foreach( var n in noleggios )
             // {
             //     if(n.IdNoleggio == idNolo)
@@ -115,14 +121,6 @@ namespace NoleggioVeicoli
 
         public static double SpesaPerNoleggi(String cf, List<Noleggio> noleggios)
         {
-            // double spesa = 0.0;
-            // var listaNoleggi = noleggios.FindAll(x => x.CfCliente.Contains(cf));
-            // foreach (var item in listaNoleggi)
-            // {
-            //     spesa = spesa + item.CostoNoleggio;
-            // }
-            // return spesa;
-
             var retVal = from x in noleggios
                 where x.CfCliente==cf
                 select x;
